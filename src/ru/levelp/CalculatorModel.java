@@ -44,41 +44,59 @@ public class CalculatorModel {
 
         } else if (operationStack.peek().equals("sin")) {
             myResul = Math.sin(Math.toRadians(operands.pop()));
+            operationStack.pop();
         } else if (operation.equals("tan")) {
             myResul = Math.tan(Math.toRadians(operands.pop()));
+            operationStack.pop();
         } else if (operation.equals("atan")) {
             myResul = Math.atan(Math.toRadians(operands.pop()));
+            operationStack.pop();
         } else if (operation.equals("cos")) {
             myResul = Math.cos(Math.toRadians(operands.pop()));
+            operationStack.pop();
         } else if (operation.equals("ln")) {
             myResul = Math.log(operands.pop());
+            operationStack.pop();
         } else if (operation.equals("lg")) {
             myResul = Math.log10(operands.pop());
+            operationStack.pop();
         } else if (operation.equals("log2")) {
             myResul = Math.log10(operands.pop()) / Math.log10(2);
+            operationStack.pop();
         } else if (operation.equals("x^2")) {
-            view.setResult(Math.pow(operands.pop(), 2));
+            myResul = Math.pow(operands.pop(), 2);
+            operationStack.pop();
         } else if (operation.equals(sqr2)) {
-            view.setResult(Math.sqrt(operands.pop()));
+            myResul = Math.sqrt(operands.pop());
+            operationStack.pop();
         } else if (operation.equals("M+")) {
             memory = memory + operands.pop();
+            operationStack.pop();
             myResul = 0;
         } else if (operation.equals("M-")) {
+            operationStack.pop();
             memory -= operands.pop();
             myResul = 0;
         } else if (operation.equals("MC")) {
+            operationStack.pop();
             memory = 0;
         } else if (operation.equals("MR")) {
+            operationStack.pop();
             myResul = memory;
+
         } else if (operation.equals("^")) {
             double a = operands.pop();
             double b = operands.pop();
             myResul = Math.pow(b, a);
+            operationStack.pop();
         } else {
             this.operation = operation;
             myResul = 0;
+            operationStack.pop();
         }
+
         view.setResult(myResul);
+
     }
 
     public double toDo() {
